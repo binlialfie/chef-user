@@ -27,7 +27,7 @@ def whyrun_supported?
 end
 
 def load_current_resource
-  @my_home = user_home
+  @my_home = new_resource.user_home || node['user']['home_root']
   @my_shell = new_resource.shell || node['user']['default_shell']
   @manage_home = bool(new_resource.manage_home, node['user']['manage_home'])
   @non_unique = bool(new_resource.non_unique, node['user']['non_unique'])
